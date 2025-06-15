@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytics & Reports | HealthCare+</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f8fb;
+      padding-bottom: 5rem;
+    }
+    .kpi-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .kpi-card h2 {
+      font-size: 2rem;
+      color: #007bff;
+    }
+    .alert-banner {
+      background: #ffeeba;
+      color: #856404;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+    canvas {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <h1 class="text-center fw-bold mb-4">📊 Analytics & Reports Dashboard</h1>
+
+    <div class="alert-banner">
+      ⚠️ Patient appointment cancellations are up by 18% this month. Consider sending reminders.
+    </div>
+
+    <div class="row g-4 mb-4">
+      <div class="col-md-4">
+        <div class="kpi-card">
+          <h6>Total Appointments</h6>
+          <h2 id="totalAppointments">1,208</h2>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="kpi-card">
+          <h6>Avg. Treatment Success Rate</h6>
+          <h2 id="successRate">94%</h2>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="kpi-card">
+          <h6>Monthly Patient Growth</h6>
+          <h2 id="growthRate">+12%</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <canvas id="appointmentsChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="successForecastChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="departmentChart"></canvas>
+      </div>
+      <div class="col-lg-6">
+        <canvas id="conditionsChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const appointmentsCtx = document.getElementById('appointmentsChart');
+    const forecastCtx = document.getElementById('successForecastChart');
+    const departmentCtx = document.getElementById('departmentChart');
+    const conditionsCtx = document.getElementById('conditionsChart');
+
+    new Chart(appointmentsCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Appointments',
+          data: [150, 180, 210, 200, 250, 300],
+          borderColor: '#007bff',
+          backgroundColor: 'rgba(0,123,255,0.1)',
+          fill: true,
+          tension: 0.4
+        }]
+      }
+    });
+
+    new Chart(forecastCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jun', 'Jul', 'Aug', 'Sep'],
+        datasets: [{
+          label: 'Predicted Patient Volume',
+          data: [300, 320, 340, 370],
+          borderColor: '#28a745',
+          backgroundColor: 'rgba(40,167,69,0.1)',
+          fill: true,
+          borderDash: [5, 5]
+        }]
+      }
+    });
+
+    new Chart(departmentCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Cardiology', 'Ortho', 'Neuro', 'Pediatrics', 'ENT'],
+        datasets: [{
+          label: 'Patient Count',
+          data: [120, 90, 100, 70, 60],
+          backgroundColor: ['#007bff', '#6610f2', '#6f42c1', '#20c997', '#fd7e14']
+        }]
+      }
+    });
+
+    new Chart(conditionsCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Flu', 'Diabetes', 'Hypertension', 'COVID-19'],
+        datasets: [{
+          label: 'Top Diagnoses',
+          data: [200, 180, 160, 120],
+          backgroundColor: ['#17a2b8', '#ffc107', '#dc3545', '#6c757d']
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
