@@ -6,7 +6,7 @@ A fully responsive and interactive **Healthcare Management System** built using 
 
 ## 🔗 Live Demo
 
-[🔗 View Project on GitHub Pages](https://your-username.github.io/healthcare-management-system/)  
+[🔗 View Project on GitHub Pages](https://shaikmathin647.github.io/healthcare/)  
 *(Replace `your-username` with your actual GitHub username after deployment)*
 
 ---
